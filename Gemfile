@@ -48,6 +48,10 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'rails-erd'
   gem 'annotate'
+
+  gem 'rubocop', require: false
+  gem 'rubocop-rspec'
+  gem 'rubocop-airbnb'
 end
 
 group :development do
