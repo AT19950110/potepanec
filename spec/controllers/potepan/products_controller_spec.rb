@@ -5,7 +5,6 @@ RSpec.describe Potepan::ProductsController, type: :controller do
     before do
       @product = FactoryBot.create(:product)
     end
-
     # 正常にレスポンスを返すこと
     it "responds successfully" do
       get :show, params: {id: @product.id}
