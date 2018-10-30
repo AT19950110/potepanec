@@ -8,7 +8,6 @@ Rails.application.routes.draw do
 
   namespace :potepan do
 
-    #Sampleページ　#あとでルーティング消す
     get '/',                        to: 'sample#index'
     get 'index',                    to: 'sample#index'
     get :product_grid_left_sidebar, to: 'sample#product_grid_left_sidebar'
