@@ -1,83 +1,68 @@
-<div class="main-wrapper">
+<div class="header clearfix">
 
-  <!-- HEADER -->
-  <div class="header clearfix">
-
-    <!-- TOPBAR -->
-    <div class="topBar">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 hidden-sm hidden-xs">
-            <ul class="list-inline">
-              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-              <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
-              <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
-            </ul>
-          </div>
-          <div class="col-md-6 col-xs-12">
-            <ul class="list-inline pull-right">
-              <li><span><a data-toggle="modal" href='#login'>Log in</a><small>or</small><a data-toggle="modal" href='#signup'>Create an account</a></span></li>
-              <li class="dropdown searchBox">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search"></i></a>
-                <ul class="dropdown-menu dropdown-menu-right">
-                  <li>
-                    <span class="input-group">
-                      <input type="text" class="form-control" placeholder="Search…" aria-describedby="basic-addon2">
-                      <span class="input-group-addon" id="basic-addon2">Search</span>
-                    </span>
-                  </li>
-                </ul>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i>$0</a>
-                <ul class="dropdown-menu dropdown-menu-right">
-                  <li>Item(s) in your cart</li>
-                  <li>
-                    <a href="#">
-                      <div class="media">
-                        <%= image_tag("img/home/cart-items/cart-item-01.jpg", :class => "media-left media-object", :alt => "cart-Image") %>
-                        <div class="media-body">
-                          <h5 class="media-heading">INCIDIDUNT UT <br><span>2 X $199</span></h5>
-                        </div>
+  <!-- TOPBAR -->
+  <div class="topBar">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 hidden-sm hidden-xs">
+          <ul class="list-inline">
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+            <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+            <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-md-6 col-xs-12">
+          <ul class="list-inline pull-right">
+            <li><span><a data-toggle="modal" href='#login'>Log in</a><small>or</small><a data-toggle="modal" href='#signup'>Create an account</a></span></li>
+            <li class="dropdown searchBox">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search"></i></a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                  <span class="input-group">
+                    <input type="text" class="form-control" placeholder="Search…" aria-describedby="basic-addon2">
+                    <span class="input-group-addon" id="basic-addon2">Search</span>
+                  </span>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i>$0</a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li>Item(s) in your cart</li>
+                <li>
+                  <a href="#">
+                    <div class="media">
+                      <%= image_tag("img/home/cart-items/cart-item-01.jpg", :class => "media-left media-object", :alt => "cart-Image") %>
+                      <div class="media-body">
+                        <h5 class="media-heading">INCIDIDUNT UT <br><span>2 X $199</span></h5>
                       </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="media">
-                        <%= image_tag("img/home/cart-items/cart-item-01.jpg", :class => "media-left media-object", :alt => "cart-Image") %>
-                        <div class="media-body">
-                          <h5 class="media-heading">INCIDIDUNT UT <br><span>2 X $199</span></h5>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <div class="btn-group" role="group" aria-label="...">
-                      <button type="button" class="btn btn-default">Shopping Cart</button>
-                      <button type="button" class="btn btn-default">Checkout</button>
                     </div>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <div class="media">
+                      <%= image_tag("img/home/cart-items/cart-item-01.jpg", :class => "media-left media-object", :alt => "cart-Image") %>
+                      <div class="media-body">
+                        <h5 class="media-heading">INCIDIDUNT UT <br><span>2 X $199</span></h5>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <div class="btn-group" role="group" aria-label="...">
+                    <button type="button" class="btn btn-default">Shopping Cart</button>
+                    <button type="button" class="btn btn-default">Checkout</button>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
-
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-main navbar-default" role="navigation">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.html"><%= image_tag("img/logo.png", :alt => "") %></a>
-        </div>
+  </div>
+  <%= render 'layouts/navbar' %>
+</div>

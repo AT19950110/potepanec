@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     get :privacy_policy,            to: 'sample#privacy_policy'
 
     #課題2追加
-    get 'products/:id',             to: 'products#show', as: 'product'
+    resources :products,             only: [:index, :show]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
