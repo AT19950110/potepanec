@@ -1,7 +1,6 @@
 class Potepan::ProductsController < ApplicationController
-
   def index
-    #商品一覧ページを想定
+    # 商品一覧ページを想定
   end
 
   def show
