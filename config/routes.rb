@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :potepan do
-    get 'taxons/show'
+    get 'categories/show'
   end
   # This line mounts Solidus's routes at the root of your application.
   # This means, any requests to URLs such as /products, will go to Spree::ProductsController.
@@ -31,7 +31,8 @@ Rails.application.routes.draw do
 
     #課題2追加
     resources :products,            only: [:index, :show]
-    get '/categries/:taxon_id',      to: 'taxons#show'
+    #課題3追加
+    resources :categories,          only: [:show]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

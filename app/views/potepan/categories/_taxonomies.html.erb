@@ -1,0 +1,28 @@
+<% @taxonomies.each do |taxonomy| %>
+  <div class="panel panel-default">
+    <div class="panel-heading"><%= taxonomy.name %></div>
+    <div class="panel-body">
+      <div class="collapse navbar-collapse navbar-ex1-collapse navbar-side-collapse">
+        <ul class="nav navbar-nav side-nav">
+          <% taxonomy.root.children.map do |taxon| %>
+            <li>
+              <a href="javascript:;" data-toggle="collapse" data-target="#<%= taxon.name %>">
+                <%= taxon.name %>
+                <i class="fa fa-plus"></i>
+              </a>
+              <ul id="<%= taxon.name %>" class="collapse collapseItem">
+                <% taxon.children.map do |subTaxon| %>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-caret-right" aria-hidden="true"></i>
+                      <%= subTaxon.name %></a>
+                  </li>
+                <% end %>
+              </ul>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>
