@@ -1,197 +1,106 @@
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-              <ul class="nav navbar-nav navbar-right">
-                <li class=""><a href="index.html">Home</a></li>
-                <li class="dropdown megaDropMenu">
-                  <a href="product-grid-left-sidebar.html" class="dropdown-toggle">Shop</b></a>
-                </li>
-                <li class="dropdown">
-                  <a href="about-us.html" class="dropdown-toggle">About US</a>
-                </li>
-                <li class="dropdown">
-                  <a href="blog-left-sidebar.html" class="dropdown-toggle">blog</a>
-                </li>
-              </ul>
-            </div><!-- /.navbar-collapse -->
-          </div>
-        </nav>
+<%= render partial: 'layouts/light_section', locals: {title: "お支払い方法"} %>
+<section class="mainContent clearfix stepsWrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="innerWrapper clearfix stepsPage">
+          <div class="row progress-wizard" style="border-bottom:0;">
 
-      </div>
-
-      <!-- LIGHT SECTION -->
-      <section class="lightSection clearfix pageHeader">
-        <div class="container">
-          <div class="row">
-            <div class="col-xs-6">
-              <div class="page-title">
-                <h2>お支払い方法</h2>
+            <div class="col-xs-4 progress-wizard-step complete fullBar">
+              <div class="text-center progress-wizard-stepnum">お届け先情報</div>
+              <div class="progress">
+                <div class="progress-bar"></div>
               </div>
+              <i class="progress-wizard-dot"></i>
             </div>
-            <div class="col-xs-6">
-              <ol class="breadcrumb pull-right">
-                <li>
-                  <a href="index.html">Home</a>
-                </li>
-                <li class="active">お支払い方法</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <!-- MAIN CONTENT SECTION -->
-      <section class="mainContent clearfix stepsWrapper">
-        <div class="container">
-          <div class="row">
+            <div class="col-xs-4 progress-wizard-step active">
+              <div class="text-center progress-wizard-stepnum">お支払い方法</div>
+              <div class="progress">
+                <div class="progress-bar"></div>
+              </div>
+              <i class="progress-wizard-dot"></i>
+            </div>
+
+            <div class="col-xs-4 progress-wizard-step disabled">
+              <div class="text-center progress-wizard-stepnum">入力内容確認</div>
+              <div class="progress">
+                <div class="progress-bar"></div>
+              </div>
+              <i class="progress-wizard-dot"></i>
+            </div>
+
+          </div>
+
+          <form action="" class="row" method="POST" role="form">
             <div class="col-xs-12">
-              <div class="innerWrapper clearfix stepsPage">
-                <div class="row progress-wizard" style="border-bottom:0;">
-
-  <div class="col-xs-4 progress-wizard-step complete fullBar">
-                    <div class="text-center progress-wizard-stepnum">お届け先情報</div>
-                    <div class="progress"><div class="progress-bar"></div></div>
-                    <i class="progress-wizard-dot"></i>
-                  </div>
-
-                  <div class="col-xs-4 progress-wizard-step active">
-                    <div class="text-center progress-wizard-stepnum">お支払い方法</div>
-                    <div class="progress"><div class="progress-bar"></div></div>
-                    <i class="progress-wizard-dot"></i>
-                  </div>
-
-                  <div class="col-xs-4 progress-wizard-step disabled">
-                    <div class="text-center progress-wizard-stepnum">入力内容確認</div>
-                    <div class="progress"><div class="progress-bar"></div></div>
-                    <i class="progress-wizard-dot"></i>
-                  </div>
-
-                </div>
-
-                <form action="" class="row" method="POST" role="form">
-                  <div class="col-xs-12">
-                    <div class="page-header">
-                      <h4>お支払い方法</h4>
-                    </div>
-                  </div>
-
-                  <div class="form-group col-sm-4 col-xs-12">
-                    <label for="checkout-creditcard-code">カード番号</label>
-                    <input type="password" class="form-control" id="checkout-card-number">
-                  </div>
-                  <div class="form-group col-sm-4 col-xs-12">
-                    <label for="">有効期限</label>
-                    <div class="row">
-                      <div class="col-xs-6">
-                        <span class="step-drop">
-                          <select name="checkout-card-expiration-month" id="checkout-card-expiration-month" class="select-drop">
-                            <option value="1">01</option>
-                            <option value="2">02</option>
-                            <option value="3">03</option>
-                            <option value="4">04</option>
-                            <option value="5">05</option>
-                            <option value="6">06</option>
-                            <option value="7">07</option>
-                            <option value="8">08</option>
-                            <option value="9">09</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-
-                          </select>
-                        </span>
-                      </div>
-                      <div class="col-xs-6">
-                        <span class="step-drop">
-                          <select name="checkout-card-expiration-year" id="checkout-card-expiration-year" class="select-drop">
-                            <option value="0">2016</option>
-                            <option value="1">2017</option>
-                            <option value="2">2018</option>
-                            <option value="3">2019</option>
-                            <option value="4">2020</option>
-                            <option value="5">2021</option>
-                            <option value="6">2022</option>
-                            <option value="7">2023</option>
-                            <option value="8">2024</option>
-                          </select>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group col-sm-4 col-xs-12">
-                    <label for="checkout-card-name">カード名義人</label>
-                    <input type="text" class="form-control" id="checkout-card-name">
-                  </div>
-                  <div class="col-xs-12">
-                    <div class="well well-lg clearfix">
-                      <ul class="pager">
-                      <li class="previous"><a href="checkout_step_1.html">戻る</a></li>
-                        <li class="next"><a href="checkout_step_3.html">次へ</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </form>
+              <div class="page-header">
+                <h4>お支払い方法</h4>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-    <!-- LOGIN MODAL -->
-    <div class="modal fade" id="login" tabindex="-1" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h3 class="modal-title">log in</h3>
-          </div>
-          <div class="modal-body">
-            <form action="" method="POST" role="form">
-              <div class="form-group">
-                <label for="login-email">Enter Email</label>
-                <input type="email" class="form-control" id="login-email">
+            <div class="form-group col-sm-4 col-xs-12">
+              <label for="checkout-creditcard-code">カード番号</label>
+              <input type="password" class="form-control" id="checkout-card-number">
+            </div>
+            <div class="form-group col-sm-4 col-xs-12">
+              <label for="">有効期限</label>
+              <div class="row">
+                <div class="col-xs-6">
+                  <span class="step-drop">
+                    <select name="checkout-card-expiration-month" id="checkout-card-expiration-month" class="select-drop">
+                      <option value="1">01</option>
+                      <option value="2">02</option>
+                      <option value="3">03</option>
+                      <option value="4">04</option>
+                      <option value="5">05</option>
+                      <option value="6">06</option>
+                      <option value="7">07</option>
+                      <option value="8">08</option>
+                      <option value="9">09</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+
+                    </select>
+                  </span>
+                </div>
+                <div class="col-xs-6">
+                  <span class="step-drop">
+                    <select name="checkout-card-expiration-year" id="checkout-card-expiration-year" class="select-drop">
+                      <option value="0">2016</option>
+                      <option value="1">2017</option>
+                      <option value="2">2018</option>
+                      <option value="3">2019</option>
+                      <option value="4">2020</option>
+                      <option value="5">2021</option>
+                      <option value="6">2022</option>
+                      <option value="7">2023</option>
+                      <option value="8">2024</option>
+                    </select>
+                  </span>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="login-password">Password</label>
-                <input type="password" class="form-control" id="login-password">
+            </div>
+            <div class="form-group col-sm-4 col-xs-12">
+              <label for="checkout-card-name">カード名義人</label>
+              <input type="text" class="form-control" id="checkout-card-name">
+            </div>
+            <div class="col-xs-12">
+              <div class="well well-lg clearfix">
+                <ul class="pager">
+                  <li class="previous">
+                    <a href="checkout_step_1.html">戻る</a>
+                  </li>
+                  <li class="next">
+                    <a href="checkout_step_3.html">次へ</a>
+                  </li>
+                </ul>
               </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox"> Remember Me
-                </label>
-              </div>
-              <button type="submit" class="btn btn-primary btn-block">log in</button>
-              <button type="button" class="btn btn-link btn-block">Forgot Password?</button>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-
-    <!-- SIGN UP MODAL -->
-    <div class="modal fade" id="signup" tabindex="-1" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h3 class="modal-title">Create an account</h3>
-          </div>
-          <div class="modal-body">
-            <form action="" method="POST" role="form">
-              <div class="form-group">
-                <label for="signup-email">Enter Email</label>
-                <input type="email" class="form-control" id="signup-email">
-              </div>
-              <div class="form-group">
-                <label for="signup-password">Password</label>
-                <input type="password" class="form-control" id="signup-password">
-              </div>
-              <div class="form-group">
-                <label for="signup-password-confirmation">Confirm Password</label>
-                <input type="password" class="form-control" id="signup-password-confirmation">
-              </div>
-              <button type="submit" class="btn btn-primary btn-block">Sign up</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+  </div>
+</section>

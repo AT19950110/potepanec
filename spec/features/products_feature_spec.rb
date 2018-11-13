@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Products", type: :feature do
+RSpec.feature "Products_feature", type: :feature do
   let(:product) { create(:product) }
 
   scenario "View show page" do

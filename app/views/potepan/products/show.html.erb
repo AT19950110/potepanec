@@ -1,5 +1,5 @@
 <% provide(:title, @product.name) %>
-<%= render 'potepan/products/light_section' %>
+  <%= render partial: 'layouts/light_section', locals: {title: @product.name} %>
   <!-- MAIN CONTENT SECTION -->
   <section class="mainContent clearfix">
     <div class="container">
@@ -10,67 +10,67 @@
               <div id="carousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                   <% @product.images.each_with_index do |image, index| %>
-                  <div class="item <%= "active" if index <= 0 %>" data-thumb="<%= index %>">
-                        <%= image_tag(image.attachment.url(:product), itemprop: "image") %>
+                    <div class="item <%= "active" if index <= 0 %>" data-thumb="<%= index %>">
+                      <%= image_tag(image.attachment(:product), itemprop: "image") %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="clearfix">
+                <div id="thumbcarousel" class="carousel slide" data-interval="false">
+                  <div class="carousel-inner">
+                    <% @product.images.each_with_index do |image, i| %>
+                      <div data-target="#carousel" data-slide-to="<%= i %>" class="thumb">
+                        <%= image_tag image.attachment(:mini) %>
                       </div>
                     <% end %>
                   </div>
-                </div>
-                <div class="clearfix">
-                  <div id="thumbcarousel" class="carousel slide" data-interval="false">
-                    <div class="carousel-inner">
-                      <% @product.images.each_with_index do |image, i| %>
-                        <div data-target="#carousel" data-slide-to="<%= i %>" class="thumb">
-                          <%= link_to(image_tag(image.attachment.url(:mini)), image.attachment.url(:product)) %>
-                        </div>
-                      <% end %>
-                    </div>
-                    <a class="left carousel-control" href="#thumbcarousel" role="button" data-slide="prev">
-                      <span class="glyphicon glyphicon-chevron-left"></span>
-                    </a>
-                    <a class="right carousel-control" href="#thumbcarousel" role="button" data-slide="next">
-                      <span class="glyphicon glyphicon-chevron-right"></span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="media-body">
-                <ul class="list-inline">
-                  <li>
-                    <a href="product_grid_left_sidebar.html">
-                      <i class="fa fa-reply" aria-hidden="true"></i>一覧ページへ戻る</a>
-                  </li>
-                  <!-- <li><a href="#"><i class="fa fa-plus" aria-hidden="true"></i>Share This</a></li> -->
-                </ul>
-                <h2><%= @product.name %></h2>
-                <h3><%= @product.display_price %></h3>
-                <p><%= @product.description %></p>
-
-                <span class="quick-drop">
-                  <select name="guiest_id3" id="guiest_id3" class="select-drop">
-                    <option value="0">S</option>
-                    <option value="1">M</option>
-                    <option value="2">L</option>
-                    <option value="3">XL</option>
-                  </select>
-                </span>
-                <span class="quick-drop resizeWidth">
-                  <select name="guiest_id4" id="guiest_id4" class="select-drop">
-                    <!-- <option value="0">Qty</option> -->
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                  </select>
-                </span>
-                <div class="btn-area">
-                  <a href="cart_page.html" class="btn btn-primary btn-block">カートへ入れる<i class="fa fa-angle-right" aria-hidden="true"></i>
+                  <a class="left carousel-control" href="#thumbcarousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                  </a>
+                  <a class="right carousel-control" href="#thumbcarousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
                   </a>
                 </div>
-                <%= render '/potepan/products/tabarea' %>
               </div>
+            </div>
+            <div class="media-body">
+              <ul class="list-inline">
+                <li>
+                  <a href="product_grid_left_sidebar.html">
+                    <i class="fa fa-reply" aria-hidden="true"></i>一覧ページへ戻る</a>
+                </li>
+                <!-- <li><a href="#"><i class="fa fa-plus" aria-hidden="true"></i>Share This</a></li> -->
+              </ul>
+              <h2><%= @product.name %></h2>
+              <h3><%= @product.display_price %></h3>
+              <p><%= @product.description %></p>
+
+              <span class="quick-drop">
+                <select name="guiest_id3" id="guiest_id3" class="select-drop">
+                  <option value="0">S</option>
+                  <option value="1">M</option>
+                  <option value="2">L</option>
+                  <option value="3">XL</option>
+                </select>
+              </span>
+              <span class="quick-drop resizeWidth">
+                <select name="guiest_id4" id="guiest_id4" class="select-drop">
+                  <!-- <option value="0">Qty</option> -->
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </span>
+              <div class="btn-area">
+                <a href="cart_page.html" class="btn btn-primary btn-block">カートへ入れる<i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+              </div>
+              <%= render partial: '/potepan/products/tabarea', locals: {properties: @product_properties} %>
             </div>
           </div>
         </div>
-        <%= render 'potepan/products/related_products' %>
       </div>
-    </section>
+      <%= render 'potepan/products/related_products' %>
+    </div>
+  </section>
