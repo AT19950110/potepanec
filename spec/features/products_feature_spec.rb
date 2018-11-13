@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Products_feature", type: :feature do
   let(:product) { create(:product) }
+  let!(:product_property) { create(:product_property, product: product, value: "type") }
 
   scenario "View show page" do
     visit potepan_product_path(product.id)
@@ -13,6 +14,8 @@ RSpec.feature "Products_feature", type: :feature do
     expect(page).to have_selector ".media-body h2", text: product.name
     expect(page).to have_selector ".media-body h3", text: product.display_price
     expect(page).to have_selector ".media-body p", text: product.description
+    expect(page).to have_selector ".tab-content li", text:
+        "#{product_property.property.presentation} : #{product_property.value}"
     expect(page).to have_link 'Home', href: potepan_index_path
   end
 end
