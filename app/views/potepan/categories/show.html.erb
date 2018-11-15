@@ -5,16 +5,20 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3 col-sm-4 col-xs-12 sideBar">
-        <%= render 'potepan/categories/taxonomies' %>
+        <%= render partial: 'potepan/categories/taxonomies', locals: {taxonomies: @taxonomies} %>
         <%= render 'potepan/categories/search' %>
       </div>
       <div class="col-md-9 col-sm-8 col-xs-12">
         <%= render 'potepan/categories/filters' %>
         <div class="row">
+        <% if @products.any? %>
+          <% @products.each do |product| %>
+          <% url = spree.product_path(product, taxon_id: @taxon.try(:id)) %>
+
           <div class="col-sm-4 col-xs-12">
             <div class="productBox">
               <div class="productImage clearfix">
-                <%= image_tag("img/products/products-01.jpg", :alt => "products-img") %>
+                <%= image_tag(product.display_image.attachment.url(:small), alt: "#{product.name}-img") %>
                 <div class="productMasking">
                   <ul class="list-inline btn-group" role="group">
                     <li>
@@ -23,7 +27,7 @@
                       </a>
                     </li>
                     <li>
-                      <a href="cart_page.html" class="btn btn-default">
+                      <a href="<%= potepan_cart_page_path %>" class="btn btn-default">
                         <i class="fa fa-shopping-cart"></i>
                       </a>
                     </li>
@@ -36,13 +40,16 @@
                 </div>
               </div>
               <div class="productCaption clearfix">
-                <a href="single_product.html">
-                  <h5>Nike Sportswear</h5>
+                <a href="<%= potepan_product_path(product.id) %>">
+                  <h5><%= product.name %></h5>
                 </a>
-                <h3>199円</h3>
+                <h3><%= product.display_price %></h3>
               </div>
             </div>
           </div>
+          <% end %>
+        <% end %>
+
           <div class="col-sm-4 col-xs-12">
             <div class="productBox">
               <div class="productImage clearfix">
