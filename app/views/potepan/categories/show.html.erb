@@ -1,5 +1,5 @@
 <% provide(:title, @taxon.name) %>
-<%= render 'layouts/light_section' %>
+<%= render partial: 'layouts/light_section', locals: {title: @taxon.name} %>
 <!-- MAIN CONTENT SECTION -->
 <section class="mainContent clearfix productsContent">
   <div class="container">
