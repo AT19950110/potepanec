@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Potepanec</title>
+    <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+    <!-- SITE TITTLE -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- GOOGLE FONT -->
+    <%= stylesheet_link_tag "application", 'https://fonts.googleapis.com/css?family=Oxygen:400,300,700', :media => "all" %>
+    <%= render 'layouts/shim' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="main-wrapper">
+      <%= render 'layouts/header' %>
+      <%= yield %>
+      <%= render 'layouts/partners' %>
+      <%= render 'layouts/footer' %>
+      <%= render 'layouts/copy_right' %>
+    </div>
+    <%= render 'layouts/login_modal' %>
+    <%= render 'layouts/sign_up_modal' %>
+    <%= render 'layouts/product_quick_view_modal' %>
+    <%= debug(params) if Rails.env.development? %>
+    <%= javascript_include_tag 'application' %>
   </body>
 </html>

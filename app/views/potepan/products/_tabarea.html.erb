@@ -1,0 +1,16 @@
+<div class="tabArea">
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <a data-toggle="tab" href="#property-types">property-types</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div id="property-types" class="tab-pane fade in active">
+      <ul class="list-unstyled">
+        <% properties.each do |type| %>
+          <li><%= "#{type.property.presentation}　:　#{type.value}" %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
