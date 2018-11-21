@@ -3,7 +3,11 @@
     <div class="row">
       <div class="col-xs-6">
         <div class="page-title">
-          <h2><%= title if title.present? %></h2>
+          <% if title.present? && title.include?("/") %>
+            <h2><%= title.split("/").last %></h2>
+          <% else %>
+            <h2><%= title %></h2>
+          <% end %>
         </div>
       </div>
       <div class="col-xs-6">
@@ -11,7 +15,13 @@
           <li>
             <%= link_to "Home", potepan_index_path %>
           </li>
-          <li class="active"><%= title if title.present? %></li>
+          <% if title.present? && title.include?("/") %>
+            <% title.split("/").each do |subTitle| %>
+              <li class="active"><%= subTitle %></li>
+            <% end %>
+          <% else %>
+            <li class="active"><%= title %></li>
+          <% end %>
         </ol>
       </div>
     </div>

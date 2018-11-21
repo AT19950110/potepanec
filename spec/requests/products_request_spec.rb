@@ -14,7 +14,10 @@ RSpec.describe "Products_request", type: :request do
       expect(response).to be_successful
       expect(response).to have_http_status "200"
     end
-
+    # 正しいViewを返すこと
+    it "show correct View" do
+      expect(response).to render_template :show
+    end
     # 商品が表示されていることを確認
     it "show templete products display" do
       expect(response.body).to include product.name
@@ -22,6 +25,11 @@ RSpec.describe "Products_request", type: :request do
       expect(response.body).to include product.description
       expect(response.body).to include product_property.property.presentation
       expect(response.body).to include product_property.value
+    end
+    # データが取得できていること
+    it "assigns instance variables" do
+      expect(assigns(:product)).to eq product
+      expect(assigns(:product_properties)).to match_array product_property
     end
   end
 end

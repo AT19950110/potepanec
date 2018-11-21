@@ -6,16 +6,21 @@
         <ul class="nav navbar-nav side-nav">
           <% taxonomy.root.children.map do |taxon| %>
             <li>
-              <a href="javascript:;" data-toggle="collapse" data-target="#<%= taxon.name %>">
+              <% if taxon.children.blank? %>
+              <a href="<%= taxon.id %>" data-toggle="collapse" data-target="#<%= taxon.name %>">
+                <% else %>
+                <a href="javascropt:;" data-toggle="collapse" data-target="#<%= taxon.name %>">
+                  <i class="fa fa-plus"></i>
+                <% end %>
                 <%= taxon.name %>
-                <i class="fa fa-plus"></i>
               </a>
               <ul id="<%= taxon.name %>" class="collapse collapseItem">
                 <% taxon.children.map do |subTaxon| %>
                   <li>
-                    <a href="#">
+                    <a href="<%= subTaxon.id %>">
                       <i class="fa fa-caret-right" aria-hidden="true"></i>
-                      <%= subTaxon.name %></a>
+                      <%= subTaxon.name %>
+                    </a>
                   </li>
                 <% end %>
               </ul>
