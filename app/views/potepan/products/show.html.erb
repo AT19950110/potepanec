@@ -71,6 +71,6 @@
           </div>
         </div>
       </div>
-      <%= render 'potepan/products/related_products' %>
+      <%= render partial: 'potepan/products/related_products', locals: {product: @product, related_products: @related_products} %>
     </div>
   </section>
