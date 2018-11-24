@@ -7,7 +7,7 @@ RSpec.describe "Categories_request", type: :request do
     let!(:rails_bags) { create(:product, taxons: [bag], name: "Ruby on Rails Bags") }
 
     before do
-      get potepan_categories_path(bag.id)
+      get potepan_category_path(bag.id)
     end
 
     # 正常にレスポンスを返すこと
