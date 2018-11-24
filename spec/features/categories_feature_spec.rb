@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.feature "Categories_feature", type: :feature do
   let!(:taxonomy) { create(:taxonomy, name: "Category") }
-  let!(:taxon) { taxonomy.root.children.create(name: "Clothing") }
-  let!(:t_shirts) { taxon.root.children.create(name: "T-Shirts") }
-  let!(:shirts) { t_shirts.children.create(name: "Shirts") }
+  let!(:taxon) { create(:taxon, name: "Clothing", taxonomy: taxonomy, parent: taxonomy.root) }
+  let!(:t_shirts) { create(:taxon, name: "T-Shirts", parent: taxon.root) }
+  let!(:shirts) { create(:taxon, name: "Shirts", parent: t_shirts.root) }
   let!(:product) { create(:product, name: "Ruby on Rails T-Shirt", taxons: [t_shirts]) }
 
   scenario "View category show page" do
