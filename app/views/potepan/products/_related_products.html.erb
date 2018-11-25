@@ -4,8 +4,7 @@
       <h4>関係商品</h4>
     </div>
   </div>
-  <% related_products.delete(product) %>
-  <% related_products[0..3].each do |related_product| %>
+  <% related_uniq_products_array(product).each do |related_product| %>
     <div class="col-md-3 col-sm-6 col-xs-12">
       <div class="productBox">
         <div class="productImage clearfix">
