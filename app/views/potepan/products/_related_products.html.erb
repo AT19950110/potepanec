@@ -30,8 +30,10 @@
           </div>
         </div>
         <div class="productCaption clearfix">
-          <h5><%= related_product.name %></h5>
-          <h3><%= related_product.display_price %></h3>
+          <%= link_to potepan_product_path(related_product.id) do %>
+            <h5><%= related_product.name %></h5>
+            <h3><%= related_product.display_price %></h3>
+          <% end %>
         </div>
       </div>
     </div>

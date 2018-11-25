@@ -5,6 +5,8 @@ RSpec.describe "Products_request", type: :request do
     let!(:product) { create(:product) }
     let!(:product_property) { create(:product_property, product: product, value: "type") }
 
+    include ProductsHelper
+
     before do
       get potepan_product_url(product.id)
     end
@@ -30,6 +32,10 @@ RSpec.describe "Products_request", type: :request do
     it "assigns instance variables" do
       expect(assigns(:product)).to eq product
       expect(assigns(:product_properties)).to match_array product_property
+    end
+    # 関連した商品のデータが取得できていること
+    it "assigns related_products" do
+      expect(related_uniq_products_array(product)).not_to include product
     end
   end
 end
