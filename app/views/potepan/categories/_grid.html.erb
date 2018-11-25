@@ -1,6 +1,6 @@
 <div class="row">
-  <% if @products.any? %>
-    <% @products.each do |product| %>
+  <% if products.any? %>
+    <% products.each do |product| %>
       <div class="col-sm-4 col-xs-12">
         <div class="productBox">
           <div class="productImage clearfix">
@@ -13,9 +13,9 @@
                   </a>
                 </li>
                 <li>
-                  <a href="<%= potepan_cart_page_path %>" class="btn btn-default">
+                  <%= link_to potepan_cart_page_path, class: "btn btn-default" do %>
                     <i class="fa fa-shopping-cart"></i>
-                  </a>
+                  <% end %>
                 </li>
                 <li>
                   <a class="btn btn-default" data-toggle="modal" href=".quick-view">
@@ -26,9 +26,9 @@
             </div>
           </div>
           <div class="productCaption clearfix">
-            <a href="<%= potepan_product_path(product.id) %>">
+            <%= link_to potepan_product_path(product.id) do %>
               <h5><%= product.name %></h5>
-            </a>
+            <% end %>
             <h3><%= product.display_price %></h3>
           </div>
         </div>

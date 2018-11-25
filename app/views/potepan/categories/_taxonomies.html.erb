@@ -7,20 +7,20 @@
           <% taxonomy.root.children.map do |taxon| %>
             <li>
               <% if taxon.children.blank? %>
-              <a href="<%= taxon.id %>" data-toggle="collapse" data-target="#<%= taxon.name %>">
-                <% else %>
-                <a href="javascropt:;" data-toggle="collapse" data-target="#<%= taxon.name %>">
+                <%= link_to taxon.name, taxon.id.to_s, data: {toggle: "collapse", target: "##{taxon.name}"} %>
+              <% else %>
+                <%= link_to "javascript:;", data: {toggle: "collapse", target: "##{taxon.name}"} do %>
                   <i class="fa fa-plus"></i>
+                  <%= taxon.name %>
                 <% end %>
-                <%= taxon.name %>
-              </a>
+              <% end %>
               <ul id="<%= taxon.name %>" class="collapse collapseItem">
-                <% taxon.children.map do |subTaxon| %>
+                <% taxon.children.map do |sub_taxon| %>
                   <li>
-                    <a href="<%= subTaxon.id %>">
+                    <%= link_to sub_taxon.id.to_s do %>
                       <i class="fa fa-caret-right" aria-hidden="true"></i>
-                      <%= subTaxon.name %>
-                    </a>
+                      <%= sub_taxon.name %>
+                    <% end %>
                   </li>
                 <% end %>
               </ul>
