@@ -11,7 +11,7 @@ module ApplicationHelper
   def heading_title(page_heading)
     if page_heading.present? && page_heading.include?("/")
       page_heading.split("/")
-    elsif page_heading.present?
+    else
       heading_array = []
       heading_array.push(page_heading)
     end
