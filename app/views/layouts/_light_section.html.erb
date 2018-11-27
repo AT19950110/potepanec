@@ -1,13 +1,10 @@
+<% provide(:page_heading, title) %>
 <section class="lightSection clearfix pageHeader">
   <div class="container">
     <div class="row">
       <div class="col-xs-6">
         <div class="page-title">
-          <% if title.present? && title.include?("/") %>
-            <h2><%= title.split("/").last %></h2>
-          <% else %>
-            <h2><%= title %></h2>
-          <% end %>
+          <h2><%= heading_title(yield(:page_heading)).last %></h2>
         </div>
       </div>
       <div class="col-xs-6">
@@ -15,12 +12,8 @@
           <li>
             <%= link_to "Home", potepan_index_path %>
           </li>
-          <% if title.present? && title.include?("/") %>
-            <% title.split("/").each do |subTitle| %>
-              <li class="active"><%= subTitle %></li>
-            <% end %>
-          <% else %>
-            <li class="active"><%= title %></li>
+          <% heading_title(yield(:page_heading)).each do |permalink| %>
+            <li class="active"><%= permalink %></li>
           <% end %>
         </ol>
       </div>
