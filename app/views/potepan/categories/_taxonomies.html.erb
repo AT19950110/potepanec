@@ -1,33 +1,36 @@
-<% taxonomies.each do |taxonomy| %>
-  <div class="panel panel-default">
-    <div class="panel-heading"><%= taxonomy.name %></div>
-    <div class="panel-body">
-      <div class="collapse navbar-collapse navbar-ex1-collapse navbar-side-collapse">
-        <ul class="nav navbar-nav side-nav">
-          <% taxonomy.root.children.map do |taxon| %>
-            <li>
-              <% if taxon.children.blank? %>
-                <%= link_to taxon.name, taxon.id.to_s, data: {toggle: "collapse", target: "##{taxon.name}"} %>
-              <% else %>
-                <%= link_to "javascript:;", data: {toggle: "collapse", target: "##{taxon.name}"} do %>
-                  <i class="fa fa-plus"></i>
-                  <%= taxon.name %>
-                <% end %>
+<div class="panel panel-default">
+  <div class="panel-heading"><%= taxonomy.name %></div>
+  <div class="panel-body">
+    <div class="collapse navbar-collapse navbar-ex1-collapse navbar-side-collapse">
+      <ul class="nav navbar-nav side-nav">
+        <% taxonomy.root.children.each do |taxon| %>
+          <li>
+            <% if taxon.children.blank? %>
+              <%= link_to potepan_category_path(taxon.id), data: {toggle: "collapse", target: "#category-#{taxon.id}"} do %>
+              <%= taxon.name %>
+              <span>(<%= taxon.products.count %>)</span>
+            <% end %>
+            <% else %>
+              <%= link_to "javascript:;", data: {toggle: "collapse", target: "#category-#{taxon.id}"} do %>
+                <i class="fa fa-plus"></i>
+                <%= taxon.name %>
+                <span>(<%= taxon.children.sum {|sub_taxon| sub_taxon.products.count} %>)</span>
               <% end %>
-              <ul id="<%= taxon.name %>" class="collapse collapseItem">
-                <% taxon.children.map do |sub_taxon| %>
-                  <li>
-                    <%= link_to sub_taxon.id.to_s do %>
-                      <i class="fa fa-caret-right" aria-hidden="true"></i>
-                      <%= sub_taxon.name %>
-                    <% end %>
-                  </li>
-                <% end %>
-              </ul>
-            </li>
-          <% end %>
-        </ul>
-      </div>
+            <% end %>
+            <ul id="category-<%= taxon.id %>" class="collapse collapseItem">
+              <% taxon.children.each do |sub_taxon| %>
+                <li>
+                  <%= link_to potepan_category_path(sub_taxon.id) do %>
+                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    <%= sub_taxon.name %>
+                    <span>(<%= sub_taxon.products.count %>)</span>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </div>
-<% end %>
+</div>

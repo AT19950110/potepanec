@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.feature "Categories_feature", type: :feature do
   let!(:taxonomy) { create(:taxonomy, name: "Category") }
   let!(:taxon) { create(:taxon, name: "Clothing", taxonomy: taxonomy, parent: taxonomy.root) }
-  let!(:t_shirts) { create(:taxon, name: "T-Shirts", parent: taxon.root) }
-  let!(:shirts) { create(:taxon, name: "Shirts", parent: t_shirts.root) }
+  let!(:t_shirts) { create(:taxon, name: "T-Shirts", taxonomy: taxonomy, parent: taxon.root) }
+  let!(:shirts) { create(:taxon, name: "Shirts", taxonomy: taxonomy, parent: t_shirts.root) }
   let!(:product) { create(:product, name: "Ruby on Rails T-Shirt", taxons: [t_shirts]) }
 
   scenario "View category show page" do
@@ -27,8 +27,8 @@ RSpec.feature "Categories_feature", type: :feature do
   # カテゴリへのリンクを検証する
   scenario "should be able to visit other category" do
     visit potepan_category_path(taxonomy.root.id)
-    expect(page).to have_link taxon.name, href: taxon.id
-    expect(page).to have_link shirts.name, href: shirts.id
+    expect(page).to have_link taxon.name, href: potepan_category_path(taxon.id)
+    expect(page).to have_link shirts.name, href: potepan_category_path(shirts.id)
   end
   # 商品詳細へのリンクを検証する
   scenario "should be able to visit products" do
