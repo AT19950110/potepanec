@@ -7,9 +7,9 @@
           <li>
             <% if taxon.children.blank? %>
               <%= link_to potepan_category_path(taxon.id), data: {toggle: "collapse", target: "#category-#{taxon.id}"} do %>
-              <%= taxon.name %>
-              <span>(<%= taxon.products.count %>)</span>
-            <% end %>
+                <%= taxon.name %>
+                <span>(<%= taxon.products.count %>)</span>
+              <% end %>
             <% else %>
               <%= link_to "javascript:;", data: {toggle: "collapse", target: "#category-#{taxon.id}"} do %>
                 <i class="fa fa-plus"></i>
