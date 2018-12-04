@@ -1,0 +1,18 @@
+<% provide(:title, @taxon.name) %>
+<%= render partial: 'layouts/light_section', locals: {title: @taxon.permalink} %>
+<section class="mainContent clearfix productsContent">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-sm-4 col-xs-12 sideBar">
+        <%= render partial: 'potepan/categories/taxonomies', collection: @taxonomies, as: "taxonomy" %>
+        <%= render 'potepan/categories/search' %>
+      </div>
+      <div class="col-md-9 col-sm-8 col-xs-12">
+        <%= render 'potepan/categories/filters' %>
+        <div class="row">
+          <%= render partial:'potepan/categories/grid', collection: @products, as: "product" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
