@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.feature "Categories_feature", type: :feature do
   let!(:taxonomy) { create(:taxonomy, name: "Category") }
   let!(:taxon) { create(:taxon, name: "Clothing", taxonomy: taxonomy, parent: taxonomy.root) }
-  let!(:t_shirts) { create(:taxon, name: "T-Shirts", parent: taxon.root) }
-  let!(:shirts) { create(:taxon, name: "Shirts", parent: t_shirts.root) }
-  let!(:product) { create(:product, name: "Ruby on Rails T-Shirt", taxons: [t_shirts]) }
+  let!(:bags) { create(:taxon, name: "bags", taxonomy: taxonomy, parent: taxonomy.root) }
+  let!(:shirts) { create(:taxon, name: "Shirts", taxonomy: taxonomy, parent: taxon) }
+  let!(:product) { create(:product, name: "Ruby on Rails T-Shirt", taxons: [shirts]) }
 
   scenario "View category show page" do
     # ページを開く
@@ -18,8 +18,8 @@ RSpec.feature "Categories_feature", type: :feature do
     expect(page).to have_selector ".col-xs-6 .breadcrumb", text: "Home category"
     expect(page).to have_selector ".panel-heading", text: taxonomy.name
     expect(page).to have_selector ".panel-body", text: taxon.name
-    expect(page).to have_selector ".panel-body", text: t_shirts.name
-    expect(page).to have_selector ".panel-body", text: t_shirts.name
+    expect(page).to have_selector ".panel-body", text: bags.name
+    expect(page).to have_selector ".panel-body", text: shirts.name
     expect(page).to have_selector ".productCaption h5", text: product.name
     expect(page).to have_selector ".productCaption h3", text: product.display_price
     expect(page).to have_link "Home", href: potepan_index_path
@@ -27,8 +27,8 @@ RSpec.feature "Categories_feature", type: :feature do
   # カテゴリへのリンクを検証する
   scenario "should be able to visit other category" do
     visit potepan_category_path(taxonomy.root.id)
-    expect(page).to have_link taxon.name, href: taxon.id
-    expect(page).to have_link shirts.name, href: shirts.id
+    expect(page).to have_link bags.name, href: potepan_category_path(bags.id)
+    expect(page).to have_link shirts.name, href: potepan_category_path(shirts.id)
   end
   # 商品詳細へのリンクを検証する
   scenario "should be able to visit products" do
