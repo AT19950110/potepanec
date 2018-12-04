@@ -4,7 +4,7 @@ RSpec.describe "Categories_request", type: :request do
   describe "GET categories#show" do
     let(:category) { create(:taxonomy, name: "Category") }
     let!(:bag) { create(:taxon, name: "Bag", taxonomy: category, parent: category.root) }
-    let!(:rails_bags) { create(:product, taxons: [bag], name: "Ruby on Rails Bags") }
+    let!(:rails_bag) { create(:product, taxons: [bag], name: "Ruby on Rails Bag") }
 
     before do
       get potepan_category_path(bag.id)
@@ -23,7 +23,7 @@ RSpec.describe "Categories_request", type: :request do
     it "assigns instance variables" do
       expect(assigns(:taxonomies)).to match_array category
       expect(assigns(:taxon)).to eq bag
-      expect(assigns(:products)).to match_array rails_bags
+      expect(assigns(:products)).to match_array rails_bag
     end
   end
 end
