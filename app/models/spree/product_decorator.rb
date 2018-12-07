@@ -1,10 +1,9 @@
 Spree::Product.class_eval do
-  scope :related_products, ->(product) {
+  scope :related_products_scope, ->(product) {
     in_taxons(product.taxons).
-    includes(master: [:images, :default_price]).
-    where.not(id: product.id).
+    where.not(id: product.id). #引数で渡された商品は除く
     distinct.
-    limit(4).
-    order(Arel.sql("RAND()"))
+    limit(4). #関連商品は４件の上限を設定
+    order(Arel.sql("RAND()")) # 毎回同じ関連商品を表示させない
   }
 end
