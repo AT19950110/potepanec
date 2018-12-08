@@ -51,6 +51,9 @@ test:
 #
 production:
   <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: potepanec_2_7_production
   username: potepanec
   password: <%= ENV['POTEPANEC_DATABASE_PASSWORD'] %>
