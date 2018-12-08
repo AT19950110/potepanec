@@ -29,7 +29,6 @@ module Potepanec
     # the framework and any gems in your application.
 
     config.time_zone = 'Tokyo'
-    config.assets.initialize_on_precompile = false
 
     config.generators do |g|
       g.system_tests false
