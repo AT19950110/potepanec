@@ -12,17 +12,12 @@ RSpec.feature "Products_feature", type: :feature do
 
   let!(:product) { create(:product, name: "Product", price: "23.45", taxons: [taxon]) }
 
-  let!(:related_product1) do
-    create(:product, name: "related_product1", price: "11.11", taxons: [taxon])
-  end
-  let!(:related_product2) do
-    create(:product, name: "related_product2", price: "22.22", taxons: [taxon])
-  end
-  let!(:related_product3) do
-    create(:product, name: "related_product3", price: "33.33", taxons: [taxon])
-  end
-  let!(:related_product4) do
-    create(:product, name: "related_product4", price: "44.44", taxons: [taxon])
+  let!(:related_products) do
+    4.times.collect do |i|
+      create(:product, name: "related_product#{i + 1}",
+                       price: "#{rand(1.0..99.9).round(2)}",
+                       taxons: [taxon])
+    end
   end
 
   let!(:other_product) do
@@ -45,7 +40,7 @@ RSpec.feature "Products_feature", type: :feature do
         "#{product_property.property.presentation} : #{product_property.value}"
     expect(page).to have_link 'Home', href: potepan_index_path
     expect(page).to have_link '一覧ページへ戻る',
-                              href: potepan_category_path(product.taxons.first.taxonomy_id)
+                              href: potepan_category_path(product.taxons.first.id)
   end
 
   scenario "should be able to visit related products" do
@@ -56,14 +51,10 @@ RSpec.feature "Products_feature", type: :feature do
     # 関連しない商品は表示しない
     expect(page).not_to have_selector ".productCaption h5", text: other_product.name
     expect(page).not_to have_selector ".productCaption h3", text: other_product.display_price
-    # 関連しない商品は表示しない
-    expect(page).to have_selector ".productCaption h5", text: related_product1.name
-    expect(page).to have_selector ".productCaption h3", text: related_product1.display_price
-    expect(page).to have_selector ".productCaption h5", text: related_product2.name
-    expect(page).to have_selector ".productCaption h3", text: related_product2.display_price
-    expect(page).to have_selector ".productCaption h5", text: related_product3.name
-    expect(page).to have_selector ".productCaption h3", text: related_product3.display_price
-    expect(page).to have_selector ".productCaption h5", text: related_product4.name
-    expect(page).to have_selector ".productCaption h3", text: related_product4.display_price
+    # 関連商品が表示される
+    related_products.each do |related_product|
+      expect(page).to have_selector ".productCaption h5", text: related_product.name
+      expect(page).to have_selector ".productCaption h3", text: related_product.display_price
+    end
   end
 end
