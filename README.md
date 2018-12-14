@@ -1,3 +1,4 @@
+本番環境:https://k4ssyi-potepanec.herokuapp.com/
 # ポテパンキャンプECサイトリポジトリ
 
 実装機能
