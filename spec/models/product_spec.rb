@@ -6,8 +6,8 @@ RSpec.describe "Product_model", type: :model do
   let!(:product) { create(:product, taxons: [taxon], name: "Product") }
 
   describe "related_products" do
-    let!(:related_products_scope) do
-      Spree::Product.related_products(product, LIMIT_OF_RELATED_PRODUCTS)
+    let(:related_products_scope) do
+      Spree::Product.related_products(product, 4)
     end
 
     context "There are 3 related products" do
