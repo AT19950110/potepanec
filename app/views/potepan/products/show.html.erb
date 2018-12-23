@@ -37,8 +37,9 @@
             <div class="media-body">
               <ul class="list-inline">
                 <li>
-                  <a href="product_grid_left_sidebar.html">
-                    <i class="fa fa-reply" aria-hidden="true"></i>一覧ページへ戻る</a>
+                  <%= link_to potepan_category_path(@product.taxons.first.id) do %>
+                      <i class="fa fa-reply" aria-hidden="true"></i>一覧ページへ戻る
+                  <% end %>
                 </li>
                 <!-- <li><a href="#"><i class="fa fa-plus" aria-hidden="true"></i>Share This</a></li> -->
               </ul>
@@ -71,6 +72,6 @@
           </div>
         </div>
       </div>
-      <%= render 'potepan/products/related_products' %>
+      <%= render partial: 'potepan/products/related_products', locals: {related_products: @related_products} %>
     </div>
   </section>
